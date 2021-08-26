@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" type="image/png" href="assets/images/logo.png" />
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/moment@2.26.0/moment.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.7/tailwind.min.css"
+      integrity="sha512-y6ZMKFUQrn+UUEVoqYe8ApScqbjuhjqzTuwUMEGMDuhS2niI8KA3vhH2LenreqJXQS+iIXVTRL2iaNfJbDNA1Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <title>Growth Ups Exam</title>
+  </head>
+  <body>
+    <div id="app">
+      <nav class="bg-pink-700">
+        <div class="container mx-auto flex items-center py-2">
+          <div class="logo mr-20">
+            <img src="assets/images/logo.png" alt="" class="w-14" />
+          </div>
+          <ul class="flex justify-between items-center w-1/3">
+            <li class="w-10">
+              <a class="text-white" href="">Our Products</a>
+            </li>
+            <li class="w-10">
+              <a class="text-white" href="">About Us</a>
+            </li>
+            <li class="w-10">
+              <a class="text-white" href="">Live Better</a>
+            </li>
+            <li class="w-20">
+              <a class="text-white" href="">Claims and Support</a>
+            </li>
+            <li class="w-10">
+              <a class="text-white" href="">My Account</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="bg-gray-100 text-center py-8">
+        <h1 class="font-bold text-2xl">DISTRICT MANAGER</h1>
+      </div>
+
+      <div class="container mx-auto">
+        <div>
+          <div class="mt-8 flex flex-col">
+            <label for="">Filter By Age</label>
+            <select
+              name=""
+              id=""
+              class="border w-1/4 py-1 px-2"
+              @change="fetchUsers()"
+              v-model="age"
+            >
+              <option disabled selected value>Select Age</option>
+              <option value="all">All</option>
+              <option value="below20">20 and below</option>
+              <option value="21-39">21 to 39</option>
+              <option value="40above">40 and above</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="mt-8">
+          <div class="split border-t border-b py-16">
+            <div
+              class="box flex shadow-md"
+              v-for="(user, index) in users"
+              :key="index"
+            >
+              <div class="mr-4">
+                <img src="assets/images/userphoto.png" alt="" />
+              </div>
+              <div>
+                <h1 class="font-bold mb-1">{{ user.name }}</h1>
+                <div class="flex">
+                  <p class="mr-1">Email:</p>
+                  <p class="font-bold">{{ user.email }}</p>
+                </div>
+                <div class="flex">
+                  <p class="mr-1">Mobile:</p>
+                  <p class="font-bold">{{ user.phone }}</p>
+                </div>
+                <div class="flex">
+                  <p class="mr-1">Company:</p>
+                  <p class="font-bold">{{ user.company }}</p>
+                </div>
+                <div class="flex">
+                  <p class="mr-1">Website:</p>
+                  <p class="font-bold">{{ user.website }}</p>
+                </div>
+                <div class="flex">
+                  <p class="mr-1">Address:</p>
+                  <p class="font-bold">
+                    {{ user.address.suite }}, {{ user.address.city }}
+                  </p>
+                </div>
+                <div class="flex">
+                  <p class="mr-1">Age:</p>
+                  <p class="font-bold">{{ user.age }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-8 mb-20">
+          <p class="font-bold mb-2">Date</p>
+          <div>
+            <input
+              type="date"
+              placeholder="Enter Age"
+              class="border py-2 px-4 mr-2"
+              v-model="date"
+            />
+            <button
+              class="
+                bg-pink-700
+                py-2
+                px-4
+                text-white
+                font-bold
+                hover:bg-purple-700
+              "
+              @click="convertDate"
+            >
+              Convert
+            </button>
+            <div class="flex mt-2">
+              <p class="font-bold mr-1">Converted Date :</p>
+              <p v-show="date">{{ convertedDate }}</p>
+              <p v-show="!date">N/A</p>
+            </div>
+
+            <div class="mt-8">
+              <button
+                class="
+                  bg-pink-700
+                  py-2
+                  px-4
+                  text-white
+                  font-bold
+                  hover:bg-purple-700
+                "
+                @click="countMe()"
+              >
+                Click Me
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/app.js"></script>
+  </body>
+</html>
