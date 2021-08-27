@@ -15,9 +15,7 @@
 .box {
   margin-bottom: 0.5em;
   padding: 1em;
-  max-width: 450px;
-  min-width: 450px;
-  height: 220px;
+  min-height: 220px;
 }
 
 nav {
