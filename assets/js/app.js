@@ -6,6 +6,14 @@ const app = Vue.createApp({
       age: "all",
       date: "",
       convertedDate: "",
+      showNav: false,
+      navItems: [
+        { name: "Show Products" },
+        { name: "About Us" },
+        { name: "Live Better" },
+        { name: "Claims and Support" },
+        { name: "My Account" },
+      ],
     };
   },
   computed: {
@@ -17,7 +25,7 @@ const app = Vue.createApp({
     this.fetchUsers();
   },
   methods: {
-    async countMe() {
+    countMe() {
       this.interval = setInterval(() => {
         console.log(this.count);
         this.count++;
@@ -31,7 +39,7 @@ const app = Vue.createApp({
         }
       }, 1000);
     },
-    async convertDate() {
+    convertDate() {
       this.convertedDate = moment(this.date).format("YYYY-MM-DD");
     },
     async fetchUsers() {
